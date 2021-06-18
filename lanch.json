@@ -1,0 +1,48 @@
+{
+    // Utilizzare IntelliSense per informazioni sui possibili attributi.
+    // Posizionare il puntatore  del mouse per visualizzare le descrizioni degli attributi esistenti.
+    // Per maggiori informazioni: https://go.microsoft.com/fwlink/?linkid= 830387
+     "versione":  "0.2.0",
+     "configurazioni":[
+      {
+         "nome":  "Listen for Xdebug",
+         "tipo":  "php",
+         "richiesta":  "lancio",
+         "porto": 9000
+      },
+      {
+         "nome":  "Avvia script attualmente aperto",
+         "tipo":  "php",
+         "richiesta":  "lancio",
+         "programma":  "${file}",
+         "cwd":  "${fileDirname}",
+         "porto": 0,
+         "runtimeArgs":[
+          "-dxdebug.start_with_request=sì"
+        ],
+         "env":{
+           "XDEBUG_MODE":  "debug,develop",
+           "XDEBUG_CONFIG":  "client_port=${port}" 
+        }
+      },
+      {
+         "nome":  "Launch Built-in web server",
+         "tipo":  "php",
+         "richiesta":  "lancio",
+         "runtimeArgs":[
+           "-dxdebug.mode=debug",
+           "-dxdebug.start_with_request=yes",
+           "-S",
+          "localhost:0"
+        ],
+         "programma":  "",
+         "cwd":  "${workspaceRoot}",
+         "porto": 9000,
+         "serverReadyAction":{
+           "pattern":  "Development Server \\(http://localhost:([0-9]+)\\) started",
+           "uriFormat":  "http://localhost:%s",
+           "azione":  "openExternally" 
+        }
+      }
+    ]
+  }
